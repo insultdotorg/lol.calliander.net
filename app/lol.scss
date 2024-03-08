@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'Alata';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/alata.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Caveat Brush';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(/fonts/caveat-brush.woff2) format('woff2');
+}
+
+* {
+  &,
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+:root {
+  --font-body: 'Alata', sans-serif;
+  --font-fancy: 'Caveat Brush', fantasy;
+
+  --color-background: #faf9f6;
+  --color-foreground: #28282b;
+  --color-link: #545559;
+
+  @media (prefers-color-scheme: dark) {
+    --color-background: #28282b;
+    --color-foreground: #faf9f6;
+    --color-link: #b3b5b7;  
+  }
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+header {
+  align-items: center;
+  display: flex;
+  font-family: var(--font-fancy);
+  font-size: 2rem;
+  height: 4rem;
+  justify-content: center;
+  margin: auto;
+  max-width: 375px;
+  text-align: center;
+}
+
+a {
+  &,
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    color: var(--color-link);
+    text-decoration: none;
+  }
+}
+
+ul {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 4rem 0;
+
+  li {
+    max-width: 345px;
+  }
+
+  a {
+    display: grid;
+    gap: 1rem;
+    text-decoration: none;
+  }
+
+  div[data-meta] {
+    display: grid;
+    text-align: center;
+  }
+
+  strong {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+}
