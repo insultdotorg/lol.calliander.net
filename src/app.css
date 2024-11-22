@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-display: swap;
+    font-family: 'Alata';
+    font-weight: 400;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url('$lib/assets/fonts/alata.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: 'Caveat Brush';
+    font-weight: 400;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url('$lib/assets/fonts/caveat-brush.woff2') format('woff2');
+  }
+}
