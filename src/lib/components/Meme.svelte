@@ -1,29 +1,16 @@
 <script>
   let { meme } = $props();
 
-  const {
-    extension,
-    fileSize,
-    hrefDirectory,
-    hrefFilename,
-    isVideo,
-    name,
-    sizeLabel,
-    srcDirectory,
-    srcFilename,
-    type
-  } = meme;
+  let a = $derived({
+    href: `//assets.calliander.net/${meme.hrefDirectory}/${meme.hrefFilename}`,
+    target: meme.isVideo ? undefined : '_blank'
+  });
 
-  const a = {
-    href: `//assets.calliander.net/${hrefDirectory}/${hrefFilename}`,
-    target: isVideo ? undefined : '_blank'
-  };
-
-  const img = {
-    src: `//assets.calliander.net/${srcDirectory}/${srcFilename}`,
-    alt: name,
+  let img = $derived({
+    src: `//assets.calliander.net/${meme.srcDirectory}/${meme.srcFilename}`,
+    alt: meme.name,
     width: 345
-  };
+  });
 </script>
 
 <li class="max-w-[345px]">
@@ -31,8 +18,8 @@
     <img {...img} />
 
     <div class="grid text-center">
-      <strong class="text-2xl underline decoration-2">{name}</strong>
-      <span>{type} / {fileSize} {sizeLabel}</span>
+      <strong class="text-2xl underline decoration-2">{meme.name}</strong>
+      <span>{meme.type} / {meme.fileSize} {meme.sizeLabel}</span>
     </div>
   </a>
 </li>
