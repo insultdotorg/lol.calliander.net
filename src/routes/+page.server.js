@@ -6,16 +6,18 @@ import {
 
 const assetsFolder = 'calliander';
 
-// Cloudinary CNAME. Private-CDN URLs omit the cloud name; if this account
-// delivers over the shared CDN, the path needs `/${CLOUDINARY_CLOUD_NAME}` here.
+// Netlify rewrite proxy in front of Cloudinary. It prepends the resource type,
+// `upload/` and the assets folder, so paths here are just `<folder>/<file>`.
 const deliveryHost = 'https://assets.calliander.net';
 
 const auth = `Basic ${Buffer.from(`${CLOUDINARY_API_KEY}:${CLOUDINARY_API_SECRET}`).toString('base64')}`;
 
 const fileOnly = (publicId) => publicId.slice(publicId.lastIndexOf('/') + 1);
 
-const deliveryUrl = ({ format, public_id, resource_type }) =>
-  `${deliveryHost}/${resource_type}/upload/${public_id}.${format}`;
+const deliveryPath = (publicId) => publicId.replace(`${assetsFolder}/`, '');
+
+const deliveryUrl = ({ format, public_id }) =>
+  `${deliveryHost}/${deliveryPath(public_id)}.${format}`;
 
 const listResources = async (resourceType, prefix) => {
   const resources = [];
